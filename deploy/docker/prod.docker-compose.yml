@@ -1,0 +1,11 @@
+version: "3.4"
+services:
+  template:
+    image: python_template
+    build:
+      context: .
+    volumes:
+      - ./data:/data
+    command: 
+    tty: true
+    working_dir: /python_template

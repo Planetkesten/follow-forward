@@ -1,0 +1,19 @@
+jobs:
+  job_id:
+    # ...
+
+    # Add "id-token" with the intended permissions.
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    steps:
+    # actions/checkout MUST come before auth
+    - uses: 'actions/checkout@v3'
+
+    - id: 'auth'
+      name: 'Authenticate to Google Cloud'
+      uses: 'google-github-actions/auth@v0'
+      with:
+        workload_identity_provider: projects/690071063802/locations/global/workloadIdentityPools/github-actions/providers/github-oidc-provider
+        service_account: 'oidc-mapped-magic-jq-sa@identity-pk.iam.gserviceaccount.com'
